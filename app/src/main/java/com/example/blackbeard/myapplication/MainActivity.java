@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                addressList.add(addresses.get(0).getAddressLine(0) + addresses.get(0).getAddressLine(1));
+                addressAdapter.add(addresses.get(0).getAddressLine(0) + addresses.get(0).getAddressLine(1));
             } catch (IOException ex) {
                 Log.e("LOCATION", "IO Exception", ex);
             }
@@ -147,13 +147,6 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
-
-    private void updateLastKnownLocation(Location lastLocation) {
-        if (lastLocation != null) {
-            latView.setText("Last known latitude:" + String.valueOf(lastLocation.getLatitude()));
-            longView.setText("Last known longitude:" + String.valueOf(lastLocation.getLongitude()));
-        }
-    }
 
     private void getStreetAddress (Location location) {
         List<Address> addresses;
